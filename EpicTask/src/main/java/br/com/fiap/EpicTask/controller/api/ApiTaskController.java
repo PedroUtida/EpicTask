@@ -31,7 +31,8 @@ public class ApiTaskController {
 	private TaskRepository repository;
 
 	@GetMapping
-	@Cacheable("login")
+	@Cacheable
+	("login")
 	public Page<Task> userindex(@RequestParam(required = false) String username,
 			@PageableDefault Pageable pageable) {
 		if (username == null) return repository.findAll(pageable);		
