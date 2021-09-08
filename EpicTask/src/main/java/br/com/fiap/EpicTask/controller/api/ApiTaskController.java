@@ -31,24 +31,21 @@ public class ApiTaskController {
 	private TaskRepository repository;
 
 	@GetMapping
-	@Cacheable
-	("login")
+	@Cacheable("login")
 	public Page<Task> userindex(@RequestParam(required = false) String username,
 			@PageableDefault Pageable pageable) {
 		if (username == null) return repository.findAll(pageable);		
 		return repository.findByUsernameContaining(username, pageable);
 	}
 
-	@PostMapping
-	("/cadastro")
+	@PostMapping("/cadastro")
 	public ResponseEntity<Task> create(@RequestBody Task task, UriComponentsBuilder uriBuilder) {
 		repository.save(task);
 		URI uri = uriBuilder.path("/api/task/{id}").buildAndExpand(task.getId()).toUri();
 		return ResponseEntity.created(uri).body(task);
 	}
 
-	@GetMapping
-	("{id}")
+	@GetMapping("{id}")
 	public ResponseEntity<Task> get(@PathVariable Long id) {
 		Optional<Task> task = repository.findById(id);
 
