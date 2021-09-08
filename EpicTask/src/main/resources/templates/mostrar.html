@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+	<h1>Lista usuários</h1>
+	<div class="listagem">
+
+		<ul th:each="list : ${list}" >
+			<li >
+			<a href="/login">Voltar</a>
+				<h2 th:text="${list.id}"></h2>
+				<p>Nome:<p>
+				<p th:text="${list.nome}"><p>
+				<p>Email:<p>
+				<p th:text="${list.email}"></p>
+				<p>Senha:<p>
+				<p th:text="${list.senha}"></p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

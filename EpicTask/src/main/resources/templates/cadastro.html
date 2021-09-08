@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Cadastrar-se</title>
+    </head>
+    <body>
+        <div id="content">
+            <h2>Cadastro</h2>
+
+            <a href="/user/new">Novo usuário</a>
+
+            <ul th:each="user : ${users}">
+                <li>
+                    <div style="display: flex; align-items: center">
+                        <span>Nome: </span>
+                        <p th:text="${name}"></p>
+                    </div>
+                    <div style="display: flex; align-items: center">
+                        <span>Senha: </span>
+                        <p th:text="${password}"></p>
+                    </div>
+                    <div style="display: flex; align-items: center">
+                        <span>E-mail: </span>
+                        <p th:text="${email}"></p>
+                        <button>Registrar-se</button>
+                        <a href="/login">Voltar</a>
+                    </div>                    
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
